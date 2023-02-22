@@ -1,0 +1,13 @@
+h1 {
+    color: rgb(64, 64, 234);
+}
+
+.programmer {
+    color: grey;
+    font-style: italic;
+}
+
+.father {
+    display: inline-block;
+    color: red;
+}
