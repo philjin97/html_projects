@@ -1,0 +1,70 @@
+body {
+    background-color: grey;
+    padding: 20px;
+}
+
+div {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav,
+.content{
+    margin: 20px;
+}
+
+.content {
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 0px;
+}
+
+.logo {
+    font-weight: bold;
+    margin: 20px;
+}
+
+.login {
+    font-weight: bold;
+    margin: 20px;
+}
+
+.mix {
+    background-color: burlywood;
+}
+
+.last {
+    padding: 20px;
+    margin: 0px 20px;
+}
+
+p {
+    margin: 20px;
+}
+
+.one {
+    flex-basis: 50%
+}
+
+.two {
+    flex-basis: 30%
+}
+
+.three {
+    flex-basis: 20%
+}
+
+.footer {
+    margin: 20px;
+    justify-content: center;
+}
+
+.footername {
+    font-weight: bold;
+    margin: 20px;
+}
+
+
+
+

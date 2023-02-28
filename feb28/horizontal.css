@@ -1,0 +1,31 @@
+body {
+    background-color: grey;
+    padding: 20px;
+}
+
+div {
+    background-color: aqua;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav,
+.content {
+    margin: 20px;
+}
+
+.content {
+    flex-direction: column;
+    padding: 20px;
+}
+
+.logo {
+    font-weight: bold;
+    margin: 20px;
+}
+
+.login {
+    font-weight: bold;
+    margin: 20px;
+}
+
