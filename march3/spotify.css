@@ -1,0 +1,104 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+.block {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
+.block_top {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    margin: 0;
+    padding: 0;
+    border: 2px solid white;
+}
+
+.block_left_nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 20%;
+    height: 80%;
+    background-color: black;
+}
+
+img {
+    height: 10%;
+    width: 80%;
+    margin-left: 15px;
+}
+
+.side {
+    color: white;
+    margin: 20px;
+}
+
+.block_center {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    width: 80%;
+    height: 80%;
+    background-color: rgb(48, 48, 48);
+}
+
+.block_top_nav {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    top: 0;
+    width: 80%;
+    height: 20%;
+    background-color: rgb(33, 33, 33)
+}
+
+button {
+    text-decoration: none;
+    background-color: white;
+}
+
+.block_bottom {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(130, 130, 130);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.song {
+    margin-top: 200px;
+    margin-left: 50px;
+    padding-bottom: 30px;
+    height: 170px;
+    width: 170px;
+    border: 10px solid black;
+    background-color: black;
+}
+.name1 {
+    color: white;
+    margin-left: 60px;
+}
+
+.name2 {
+    color: white;
+    margin-left: 60px;
+}
