@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .text_font {
+            font-family: 'Noto Sans KR', sans-serif;
+            /* 전체 내용에 적용할 폰트 */
+        }
+
+        .header {
+            /* 위키백과 헤더 */
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border: 0px solid white;
+            margin-top: 1%;
+            margin-bottom: 1%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .header_left {
+            /* 위키백과 상단 - 계정 만들기, 로그인 */
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border: 0px solid white;
+            margin-top: 1%;
+            margin-bottom: 3%;
+        }
+
+        .header_logo_img {
+            /* 위키백과 로고 이미지 삽입 */
+            width: 50px;
+            height: 50px;
+            margin-left: 5%;
+        }
+
+        .header_name{
+            /* 위키백과 대문 이름 사이즈 조절 */
+            width: 110px;
+            height: 50px;
+            margin-left: 7%;
+        }
+
+        .header_right {
+            /* 계정 만들기, 로그인 링크 */
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border: 0px solid white;
+            margin-top: 1%;
+            margin-bottom: 3%;
+            width: 150px;
+            height: 25px;
+        }
+
+        .name_title {
+            display: flex;
+            flex-direction: column;
+            color: black;
+            margin-left: 25.4%;
+            margin-right: 7%;
+            margin-bottom: 1%;
+            border-bottom: 1px solid darkgray;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-basis: auto;
+            height: 870px;
+            margin-left: 18%;
+            justify-content: space-around;
+        }
+
+        .left_side {
+            /* 목차 (처음 위치, 생애, 약력, 저서) 구현 */
+            position: fixed;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 1200px;
+            border: 0px solid white;
+            margin: 0%;
+            padding-left: 5%;
+        }
+
+        .right_side_info_box {
+            /* 오른쪽 박스 구현 */
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 870px;
+            border: 1px solid black;
+            margin-right: 5%;
+            color: black;
+            background-color: rgb(228, 228, 228);
+        }
+
+        .right_side_info_box_title {
+            margin: 5px;
+            color: black;
+            background-color: rgb(226, 226, 226);
+            text-align: center;
+        }
+
+        .right_side_info_box_img {
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            width: 350px;
+            height: 250px;
+            border: 0px solid white;
+            transform: translate(3.5%,0%);
+        }
+
+        .right_side_info_box_content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 396px;
+            height: 48px;
+        }
+
+        .right_side_info_box_align {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .right_side_info_box_text_l {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 198px;
+            height: 48px;
+            padding-left: 20px;
+            padding-right: 100px;
+        }
+
+        .right_side_info_box_text_r {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 198px;
+            height: 48px;
+        }
+
+        .main_info_container {
+            /* 본문을 담을 틀 */
+            width: 850px;
+            height: 870px;
+            display: flex;
+            flex-direction: column;
+            border: 0px solid white;
+        }
+
+        .summary {
+            /* 본문 첫번째 문단 */
+            margin-left: 10%;
+            border: 0px solid white;
+        }
+        
+        .life_title {
+            margin-left: 10%;
+            margin-top: 1%;
+            border-bottom: 1px solid darkgray;
+        }
+
+        .life {
+            /* 생애 문단 */
+            margin-left: 10%;
+            border: 0px solid white;
+        }
+
+        .breif_title {
+            margin-left: 10%;
+            margin-top: 1%;
+            border-bottom: 1px solid darkgray;
+        }
+
+        .brief {
+            /* 약력 문단 */
+            margin-left: 10%;
+            border: 0px solid white;
+        }
+
+        .book_title {
+            margin-left: 10%;
+            margin-top: 1%;
+            border-bottom: 1px solid darkgray;
+        }
+
+        .book {
+            margin-left: 10%;
+            border: 0px solid white;
+        }
+
+        .footnote_title {
+            margin-left: 25.4%;
+            margin-right: 7%;
+            margin-bottom: 1%;
+            margin-top: 1%;
+            border-bottom: 1px solid darkgray;
+        }
+
+        .footnote {
+            margin-left: 25.4%;
+            margin-right: 7%;
+            margin-bottom: 1%;
+            border: 0px solid white;
+        }
+        
+        .external_link_title {
+            margin-left: 25.4%;
+            margin-right: 7%;
+            margin-bottom: 1%;
+            margin-top: 1%;
+            border-bottom: 1px solid darkgray;
+        }
+
+        .external_link {
+            /* 외부 링크 문단 */
+            margin-left: 25.4%;
+            margin-right: 7%;
+            margin-bottom: 1%;
+            border: 0px solid white;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: row;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3%;
+            margin-bottom: 3%;
+            border-top: 1px solid darkgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="header" class="header">
+        <div class="header_left">
+            <img class="header_logo_img" src="C:\Users\USER\OneDrive\바탕 화면\wikipedia.png" alt="위키백과 로고">
+            <div class="header_name">
+                <img src="C:\Users\USER\OneDrive\바탕 화면\wikipedia-wordmark-ko.svg" alt="위키백과">
+                <img src="C:\Users\USER\OneDrive\바탕 화면\wikipedia-tagline-ko.svg" alt="위키백과">
+            </div>
+        </div>
+        <div class="header_right text_font">
+            <div><a href="https://ko.wikipedia.org/w/index.php?title=%ED%8A%B9%EC%88%98:%EA%B3%84%EC%A0%95%EB%A7%8C%EB%93%A4%EA%B8%B0&returnto=%ED%8C%80+%EB%B2%84%EB%84%88%EC%8A%A4%EB%A6%AC">계정 만들기</a></div>
+            <div><a href="https://ko.wikipedia.org/w/index.php?title=%ED%8A%B9%EC%88%98:%EB%A1%9C%EA%B7%B8%EC%9D%B8&returnto=%ED%8C%80+%EB%B2%84%EB%84%88%EC%8A%A4%EB%A6%AC">로그인</a></div>
+        </div>
+    </div>
+    <div class="name_title">
+        <h1>팀 버너스리</h1>
+    </div>
+    <div style="margin-left: 25.4%; margin-bottom: 1%;"><small>위키백과, 우리 모두의 백과사전</small></div>
+    <div class="container">
+        <div class="left_side text_font">
+            <div><strong>목차</strong></div>
+            <div><br></div>
+            <div><strong><a href="#header">처음 위치</a></strong></div>
+            <div><a href="file:///C:/Users/USER/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/wiki_spotify_project/01.html#life">생애</a></div>
+            <div><a href="file:///C:/Users/USER/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/wiki_spotify_project/01.html#brief">약력</a></div>
+            <div><a href="file:///C:/Users/USER/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/wiki_spotify_project/01.html#book">저서</a></div>
+            <div><a href="file:///C:/Users/USER/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/wiki_spotify_project/01.html#footnote">각주</a></div>
+            <div><a href="file:///C:/Users/USER/OneDrive/%EB%B0%94%ED%83%95%20%ED%99%94%EB%A9%B4/wiki_spotify_project/01.html#external_link">외부 링크</a></div>
+        </div>
+        <div class="main_info_container">
+            <div class="summary">
+                <div>
+                    <small>
+                    팀 버너스리 경(영어: Sir Tim Berners-Lee, OM, KBE, FRS, 1955년 6월 8일 ~ )은 영국의 컴퓨터 과학자이다.
+                    <br>
+                    1989년 월드 와이드 웹의 하이퍼텍스트 시스템을 고안하여 개발했다. 인터넷의 기반을 닦은 여러 공로로 웹의 아버지라고 불리는 인물 중 하나이다.
+                    <br>
+                    URL, HTTP, HTML 최초 설계와 구현도 CERN 시절에 동료였던 로베르 카이오(Robert Cailliau) 등과 함께 그가 주도한 것이다.
+                    <br>
+                    차세대 웹 기술인 시맨틱 웹 기술의 표준화에 힘쏟고 있다.
+                    </small>
+                </div>
+            </div>
+            <br>
+            <div class="life_title">
+                <h2>생애</h2>
+            </div>
+            <br>
+            <div id="life" class="life">
+                <div>
+                    <small>
+                        버너스리는 잉글랜드 런던에서 태어났으며, 부모는 메리 리 우즈(Mary Lee Woods)와 콘웨이 버너스리(Conway Berners-Lee)이다.
+                        <br>
+                        1990년에 낸시 칼슨(Nancy Carlson)과 결혼하였으나 2011년 이혼하였다.
+                        <br>
+                        2014년, 버너스리와 로즈메리 리스(Rosemary Leith)가 런던 세인트 제임스 궁전에서 결혼하였다.
+                    </small>
+                </div>
+            </div>
+            <br>
+            <div class="breif_title">
+                <h2>약력</h2>
+            </div>
+            <br>
+            <div id="brief" class="brief">
+                <div>
+                    <small>
+                        <ul>
+                            <li>CERN에서 WWW 개념의 기초가 된 인콰이어(Enquire)를 개발.</li>
+                            <li>1989년 글로벌 하이퍼텍스트 프로젝트를 제안.</li>
+                            <li>1990년 최초의 하이퍼텍스트 브라우저와 편집기를 개발.</li>
+                            <li>1991년 8월 6일 최초의 웹사이트가 만들어짐.</li>
+                            <li>1994년 W3C(World Wide Web Consortium)를 창립.</li>
+                            <li>1997년 4등급 대영 제국 훈장(OBE)을 받음.</li>
+                            <li>2002년 BBC '위대한 영국인 100(100 Greatest Britons)'에 선정됨.</li>
+                            <li>2004년 6월 15일 밀레니엄 테크놀로지 상(Millennium Technology Prize)의 첫 수상자가 됨.</li>
+                            <li>2004년 2등급 대영 제국 훈장(KBE, 작위급 훈장)을 받음.</li>
+                            <li>2007년 메리트 훈장(OM)을 받음.</li>
+                            <li>2016년 튜링상을 받음.</li>
+                        </ul>
+                    </small>
+                </div>
+            </div>
+            <br>
+            <div class="book_title">
+                <h2>저서</h2>
+            </div>
+            <br>
+            <div id = "book" class="book">
+                <div>
+                    <small>
+                        <ul>
+                            <li>당신이 꿈꾸는 인터넷 세상 월드와이드웹(Weaving the web), ISBN 89-475-2329-1</li>
+                            <li>정보 관리: 한가지 제안(Tim Berners-Lee, CERN)</li>
+                        </ul>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div class="right_side_info_box text_font">
+            <div class="right_side_info_box_title">
+                <div><strong>팀 버너스리</strong></div>
+                <div>Timothy John "Tim" Berners-Lee</div>
+            </div>
+            <img class="right_side_info_box_img" src="C:\Users\USER\OneDrive\바탕 화면\03_Position\01_이미지 위 이미지\01.jpg" alt="팀 버너스리">
+            <div style="text-align: center;"><small>팀 버너스리 (2014년)</small></div>
+            <br>
+            <div class="right_side_info_box_content">
+                <div class="right_side_info_box_align">
+                    <div class="right_side_info_box_text_l"><small><strong>출생</strong></small></div>
+                    <div class="right_side_info_box_text_r"><small>1955년 6월 8일(67세)<br>잉글랜드 런던</small></div>
+                </div>
+                <div class="right_side_info_box_align">
+                    <div class="right_side_info_box_text_l"><small><strong>분야</strong></small></div>
+                    <div class="right_side_info_box_text_r"><small>컴퓨터 과학</small></div>
+                </div>
+                <br>
+                <div class="right_side_info_box_align">
+                    <div class="right_side_info_box_text_l"><small><strong>소속</strong></small></div>
+                    <div class="right_side_info_box_text_r"><small>W3C<br>사우샘프턴 대학교<br>플레시<br>매사추세츠 공과대학교</small></div>
+                </div>
+                <br>
+                <div class="right_side_info_box_align">
+                    <div class="right_side_info_box_text_l"><small><strong>출신 대학</strong></small></div>
+                    <div class="right_side_info_box_text_r"><small>옥스퍼드 대학교 물리학 학사</small></div>
+                </div>
+                <br>
+                <br>
+                <div class="right_side_info_box_align">
+                    <div class="right_side_info_box_text_l"><small><strong>수상</strong></small></div>
+                    <div class="right_side_info_box_text_r"><small>튜링상(2016)<br>메레트 훈장(2007)<br>대영 제국 훈장 2등급(2004)<br>왕립학회 회원(2001)<br>왕립공학학회 회원(2001)<br>왕립예술학회 회원(2001)<br>영국 컴퓨터학회 최고회원(1995)</small></div>
+                </div>
+                <br>
+                <br>
+                <div class="right_side_info_box_align">
+                    <div class="right_side_info_box_text_l"><small><strong>배우자</strong></small></div>
+                    <div class="right_side_info_box_text_r"><small>낸시 칼슨(1990 ~ 2011)<br>로즈메리 리스(2014 ~ )</small></div>
+                </div>
+                <div class="right_side_info_box_align">
+                    <div class="right_side_info_box_text_l"><small><strong>자녀</strong></small></div>
+                    <div class="right_side_info_box_text_r"><small>1남 1녀</small></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footnote_title">
+        <h2>각주</h2>
+    </div>
+    <div id="footnote" class="footnote">
+        <div><strong>내용</strong></div>
+        <div>
+            <small>
+                <ol>
+                    <li>옥스퍼드 대학교 퀸스 칼리지, 최우수졸업(The Queen's College, Oxford, first-class degree)</li>
+                    <li>DFBCS; Distinguished Fellow of the British Computer Society</li>
+                </ol>
+            </small>
+        </div>
+        <div><strong>출처</strong></div>
+        <div>
+            <small>
+                <ol>
+                    <li>“Berners-Lee Longer Biography”. World Wide Web Consortium. 2016년 11월 1일에 확인함.</li>
+                    <li>"“Ms Rosemary Leith and Sir Tim Berners-Lee are delighted to announce that they celebrated their marriage on 20 June 2014...." World Wide Web Foundation.</li>
+                    <li>“Supplement to The London Gazette: 1997 Birthday Honours”. 《The Gazette》 (영어) (런던) (54794): B25. 1997년 6월 13일. 2016년 11월 1일에 확인함.</li>
+                    <li>“Supplement No. 1: New Years Honours List - United Kingdom”. 《The Gazette》 (영어) (런던) (57155): S24. 2003년 12월 31일. 2016년 11월 1일에 확인함.</li>
+                    <li>“Honours and Awards”. 《The Gazette》 (영어) (런던). 2007년 6월 29일. 2016년 11월 1일에 확인함.</li>
+                </ol>
+            </small>
+        </div>
+    </div>
+    <br>
+    <div class="external_link_title">
+        <h2>외부 링크</h2>
+    </div>
+    <div id="external_link" class="external_link">
+        <div>
+            <small>
+                <ul>
+                    <li>위키미디어 공용에 팀 버너스리 관련 미디어 분류가 있습니다.</li>
+                    <li><a href="https://twitter.com/timberners_lee">팀 버너스리</a> - 트위터</li>
+                    <li><a href="https://www.ted.com/speakers/tim_berners_lee">팀 버너스리</a> - TED</li>
+                    <li><a href="https://www.imdb.com/name/nm3805083/">팀 버너스리</a> - 인터넷 영화 데이터베이스</li>
+                    <li><a href="https://worldcat.org/identities/lccn-no99-10609/">팀 버너스리</a> - 월드캣</li>
+                    <li><a href="http://www.c-span.org/person/?timbernerslee">팀 버너스리</a> - C-SPAN</li>
+                </ul>
+            </small>
+        </div>
+    </div>
+    <div class="footer">
+        <br>
+        KDT 2기 풀스택 개발자 취업캠프<br>실습 26 : 상필진 장혜연
+    </div>
+</body>
+</html>
